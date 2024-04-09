@@ -1,5 +1,5 @@
 --soave sebastiano 5l creazione del ddl per Convection
-
+drop database if exists Convection;
 create database if not exists Convection;
 use Convection;
 
@@ -52,7 +52,6 @@ create table if not exists Partecipante(
     CognomePart varchar(30) not null,
     NomePart  varchar(30) not null,
     TelefonoPart  varchar(15),
-    TipologiaPart  varchar(15),
     MailPart varchar(30),
     primary key (IdPar)
 );
@@ -71,4 +70,16 @@ create table if not exists Relaziona(
     primary key(IDRel,IdProgramma),
     foreign key (IdProgramma) references Programma(IdProgramma),
     foreign key (IDRel) references Relatore(IDRel)
+);
+
+create table if not exists User(
+    idUser int auto_increment not null,
+    MailUser varchar(30),
+    PasswordUser varchar(30),
+    IsRel int null,
+    IsPar int null,
+    IsAdmin boolean null,
+    foreign key (IsPar) references Partecipante(IdPar),
+    foreign key (IsRel) references Relatore(IdRel),
+    primary key(idUser)
 );

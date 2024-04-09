@@ -54,14 +54,14 @@ INSERT INTO Programma (IdSpeech, NomeSala, FasciaOraria) VALUES
 (6, 'Sala F', '10:45 - 12:15'),
 (7, 'Sala G', '13:30 - 15:00');
 
-INSERT INTO Partecipante (CognomePart, NomePart, TelefonoPart, TipologiaPart, MailPart) VALUES
-('Rossi', 'Paolo', '1234567890', 'Speaker', 'paolo.rossi@example.com'),
-('Bianchi', 'Maria', '0987654321', 'Partecipante', 'maria.bianchi@example.com'),
-('Verdi', 'Luigi', '1122334455', 'Partecipante', 'luigi.verdi@example.com'),
-('Russo', 'Giovanna', '5544332211', 'Partecipante', 'giovanna.russo@example.com'),
-('Ferrari', 'Marco', '6677889900', 'Partecipante', 'marco.ferrari@example.com'),
-('Esposito', 'Giulia', '9900112233', 'Partecipante', 'giulia.esposito@example.com'),
-('Romano', 'Luca', '8877665544', 'Partecipante', 'luca.romano@example.com');
+INSERT INTO Partecipante (CognomePart, NomePart, TelefonoPart, MailPart) VALUES
+('Rossi', 'Paolo', '1234567890', 'paolo.rossi@example.com'),
+('Bianchi', 'Maria', '0987654321', 'maria.bianchi@example.com'),
+('Verdi', 'Luigi', '1122334455', 'luigi.verdi@example.com'),
+('Russo', 'Giovanna', '5544332211', 'giovanna.russo@example.com'),
+('Ferrari', 'Marco', '6677889900', 'marco.ferrari@example.com'),
+('Esposito', 'Giulia', '9900112233', 'giulia.esposito@example.com'),
+('Romano', 'Luca', '8877665544', 'luca.romano@example.com');
 
 INSERT INTO Seglie (IdPar, IdProgramma) VALUES
 (2, 1),
@@ -80,3 +80,26 @@ INSERT INTO Relaziona (IDRel, IdProgramma) VALUES
 (5, 5),
 (6, 6),
 (7, 7);
+
+INSERT INTO User(MailUser,PasswordUser,IsAdmin) VALUE 
+("admin@example.com","admin.admin",1);
+
+
+INSERT INTO User(MailUser,PasswordUser,IsPar) VALUES
+('paolo.rossi@example.com','paolo.rossi',1),
+( 'maria.bianchi@example.com', 'maria.bianchi',2 ),
+('luigi.verdi@example.com', 'luigi.verdi',3),
+('giovanna.russo@example.com', 'giovanna.russo',4),
+('marco.ferrari@example.com', 'marco.ferrari',5),
+('giulia.esposito@example.com', 'giulia.esposito' ,6 ),
+('luca.romano@example.com','luca.romano',7);
+
+
+INSERT INTO User (PasswordUser, MailUser, IsRel) VALUES
+('Rossi.Mario','mario.rossi@example.com', 1),
+('Bianchi.Luca', 'luca.bianchi@example.com',2 ),
+('Verdi.Anna', 'anna.verdi@example.com', 3 ),
+('Russo.Giuseppe', 'giuseppe.russo@example.com',4 ),
+('Ferrari.Laura',  'laura.ferrari@example.com',5 ),
+('Esposito.Antonio', 'antonio.esposito@example.com',6 ),
+('Romano.Giovanna',  'giovanna.romano@example.com',7 );
