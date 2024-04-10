@@ -27,7 +27,7 @@ class Database {
 		self::$connection->close();
 	}
 	public  static function destroy() {
-		self::executeQuery('drop database '.$this->dbname);
+		self::executeQuery('drop database '.self::$dbname);
 	}
 }
 
