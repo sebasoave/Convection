@@ -18,14 +18,14 @@ INSERT INTO Azienda (RagioneSocialeAzienda, IndirizzoAzienda) VALUES
 ('Azienda Sei', 'Via Venezia, 303'),
 ('Azienda Sette', 'Corso Genova, 404');
 
-INSERT INTO Relatore (CognomeRel, NomeRel, TelefonoRel, MailRel, IdAzz) VALUES
-('Rossi', 'Mario', '1234567890', 'mario.rossi@example.com', 'Azienda Uno'),
-('Bianchi', 'Luca', '0987654321', 'luca.bianchi@example.com', 'Azienda Due'),
-('Verdi', 'Anna', '1122334455', 'anna.verdi@example.com', 'Azienda Tre'),
-('Russo', 'Giuseppe', '5544332211', 'giuseppe.russo@example.com', 'Azienda Quattro'),
-('Ferrari', 'Laura', '6677889900', 'laura.ferrari@example.com', 'Azienda Cinque'),
-('Esposito', 'Antonio', '9900112233', 'antonio.esposito@example.com', 'Azienda Sei'),
-('Romano', 'Giovanna', '8877665544', 'giovanna.romano@example.com', 'Azienda Sette');
+INSERT INTO Relatore (CognomeRel, NomeRel, TelefonoRel, MailRel, IdAzz,Rivisionare) VALUES
+('Rossi', 'Mario', '1234567890', 'mario.rossi@example.com', 'Azienda Uno',0),
+('Bianchi', 'Luca', '0987654321', 'luca.bianchi@example.com', 'Azienda Due',0),
+('Verdi', 'Anna', '1122334455', 'anna.verdi@example.com', 'Azienda Tre',0),
+('Russo', 'Giuseppe', '5544332211', 'giuseppe.russo@example.com', 'Azienda Quattro',0),
+('Ferrari', 'Laura', '6677889900', 'laura.ferrari@example.com', 'Azienda Cinque',0),
+('Esposito', 'Antonio', '9900112233', 'antonio.esposito@example.com', 'Azienda Sei',0),
+('Romano', 'Giovanna', '8877665544', 'giovanna.romano@example.com', 'Azienda Sette',0);
 
 INSERT INTO Speech (Titolo, Argomento) VALUES
 ('Introduzione a SQL', 'Panoramica sui concetti base di SQL'),
