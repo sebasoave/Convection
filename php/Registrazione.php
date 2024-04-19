@@ -16,9 +16,7 @@
         <input type="text" placeholder="numero tel: " name="numtel" require >
         <input type="email" placeholder="email: " name="email" require >
         <input type="password" placeholder="password: " name="password" require >
-        Partecipante: <input type="radio" id="Part" name="Tipologia" value="Partecipante" >
-        Relatore: <input type="radio" id="Rel" name="Tipologia" value="Relatore">
         <button type="submit" name="inviato" value="Registrati">Registrati</button>
     </form>
-
+    <a href='../index.php'>Home Page<a>
 </body>
