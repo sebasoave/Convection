@@ -1,10 +1,17 @@
 <?php
 include "DB.php";
+include "Conf.php";
 if (isset($_POST["invia"])) {
     echo "Vuoi Inscriverti al programma ";
-    Database::connect();
     $idprog=$_POST["id_prog"];
-    $ris=Database::executeQuery("SELECT Programma.IdProgramma,Speech.IdSpeech,Speech.Titolo,Speech.Argomento,Programma.NomeSala,Programma.FasciaOraria FROM `Programma` , `Speech` WHERE Programma.IdSpeech = Speech.IdSpeech AND (Programma.IdProgramma =".$idprog."); ");
+    Database::connect();
+    $SeiGiaInscritto=Database::executeQuery("SELECT * FROM Seglie where IdPar = '".$_SESSION["user"][0]["IdPar"]."' AND IdProgramma = '".$idprog."';");
+    if($SeiGiaInscritto->fetch_assoc()["IdPar"]){
+        echo "sei gia inscritto a questo Programma";
+    }else{
+        $nms= "";
+        $QueryForTable=Database::executeQuery("SELECT Programma.IdProgramma,Speech.IdSpeech,Speech.Titolo,Speech.Argomento,Programma.NomeSala,Programma.FasciaOraria FROM `Programma` , `Speech` WHERE Programma.IdSpeech = Speech.IdSpeech AND (Programma.IdProgramma =".$idprog."); ");
+    
 ?>
 <table border="2">
 <tr>
@@ -16,21 +23,25 @@ if (isset($_POST["invia"])) {
     <th>FasciaOraria</th>
 </tr>
 <?php
-    for ($i=0; $i < $ris->num_rows; $i++) { 
-    echo "<tr>";
-    foreach ($ris->fetch_assoc() as $key => $value) {  
-        echo "<th>".$value."</th>";   
+        for ($i=0; $i < $QueryForTable->num_rows; $i++) { 
+        echo "<tr>";
+        foreach ($QueryForTable->fetch_assoc() as $key => $value) { 
+            if ($key == "NomeSala") {
+                $nms=$value;
+            }
+            echo "<th>".$value."</th>";   
+        }
+        echo "</tr>";
+        }
+        $InsertInscrizione=Database::executeQuery("INSERT INTO Seglie(IdPar,IdProgramma) VALUE (".$_SESSION["user"][0]["IdPar"].",".$idprog.")");
+        $QtaOnDB=Database::executeQuery("SELECT NpostiSala FROM sala where NomeSala = '".$nms."';")->fetch_assoc()["NpostiSala"]-1;
+        $UpDateQta=Database::executeQuery("UPDATE sala SET NpostiSala = '".$QtaOnDB."' WHERE NomeSala = '".$nms."';");
+        Database::disconnect();
     }
-    echo "</tr>";
-    }
-    $ris=Database::executeQuery("INSERT INTO Sceglie(IdPar,IdProgramma) VALUE (".$_SESSION["user"]["IdPar"].",".$idprog.")");
-    
 
-
-
-    Database::disconnect();
 }
 else{
     echo"non arrivi dal form";
 }
 ?>
+<a href='./Partecipante.php'>Home Page<a>

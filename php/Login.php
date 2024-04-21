@@ -17,7 +17,7 @@ if ($_POST["inviato"]) {
                             // echo "SEI UN ADMIN<br>";
                         }elseif ($user->IsRel != null) {
                             //echo "SEI UN RELATORE<br>";$
-                            r=Database::executeQuery("SELECT IDRel,MailRel FROM `Relatore` WHERE `IdPar` = '".$user->IsRel."';" );
+                            $r=Database::executeQuery("SELECT IDRel,MailRel FROM `Relatore` WHERE `IdPar` = '".$user->IsRel."';" );
                             $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                             header("Location: ./Relatore.php");
                         }elseif ($user->IsPar != null) {

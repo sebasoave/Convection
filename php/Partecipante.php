@@ -16,6 +16,7 @@ $ris=Database::executeQuery("SELECT Programma.IdProgramma,Speech.IdSpeech,Speech
 <?php
 $idp=0;
 $fattibile="Iscriviti";
+$FlagFattibile="enable";
 for ($i=0; $i < $ris->num_rows; $i++) { 
     echo "<tr>";
     foreach ($ris->fetch_assoc() as $key => $value) {
@@ -23,8 +24,11 @@ for ($i=0; $i < $ris->num_rows; $i++) {
             $idp=$value;    
         }
         if ($key == "NpostiSala" && $value == 0) {
+            $FlagFattibile="disabled";
             $fattibile="No";
-        }
+        }elseif($key == "NpostiSala" && $value > 0){
+            $fattibile="Iscriviti";
+            $FlagFattibile="enable";}
         if ($key != "NpostiSala") {
             echo "<th>".$value."</th>";      
             
@@ -32,7 +36,7 @@ for ($i=0; $i < $ris->num_rows; $i++) {
     }
     echo "<th><br><form method='post' action='Iscrizione.php'>
         <input hidden name='id_prog'value='".$idp."' >
-        <input type='submit' name='invia' value='".$fattibile."'>
+        <input type='submit' name='invia' value='".$fattibile."' ".$FlagFattibile.">
     </form></th>";
     echo "</tr>";
 }
