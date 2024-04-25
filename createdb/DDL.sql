@@ -1,4 +1,4 @@
---soave sebastiano 5l creazione del ddl per Convection
+
 drop database if exists Convection;
 create database if not exists Convection;
 use Convection;

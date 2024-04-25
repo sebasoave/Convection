@@ -5,8 +5,8 @@ if (isset($_POST["invia"])) {
     echo "Vuoi Inscriverti al programma ";
     $idprog=$_POST["id_prog"];
     Database::connect();
-    $SeiGiaInscritto=Database::executeQuery("SELECT * FROM Seglie where IdPar = '".$_SESSION["user"][0]["IdPar"]."' AND IdProgramma = '".$idprog."';");
-    if($SeiGiaInscritto->fetch_assoc()["IdPar"]){
+    $par=Database::executeQuery("SELECT * FROM Seglie where IdPar = '".$_SESSION["user"][0]["IdPar"]."' AND IdProgramma = '".$idprog."';")->fetch_assoc()["IdPar"];
+    if( $par){
         echo "sei gia inscritto a questo Programma";
     }else{
         $nms= "";
