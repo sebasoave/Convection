@@ -2,11 +2,11 @@
 include "DB.php";
 include "Conf.php";
 if (isset($_POST["invia"])) {
-    echo "Vuoi Inscriverti al programma ";
+    // echo "Vuoi Inscriverti al programma ";
     $idprog=$_POST["id_prog"];
     Database::connect();
-    $par=Database::executeQuery("SELECT * FROM Seglie where IdPar = '".$_SESSION["user"][0]["IdPar"]."' AND IdProgramma = '".$idprog."';")->fetch_assoc()["IdPar"];
-    if( $par){
+    $par=Database::executeQuery("SELECT * FROM Seglie where IdPar = '".$_SESSION["user"][0]["IdPar"]."' AND IdProgramma = '".$idprog."';");
+    if ($par->num_rows > 0) {
         echo "sei gia inscritto a questo Programma";
     }else{
         $nms= "";
@@ -43,5 +43,5 @@ if (isset($_POST["invia"])) {
 else{
     echo"non arrivi dal form";
 }
-?>
+?><br>
 <a href='./Partecipante.php'>Home Page<a>
