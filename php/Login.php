@@ -18,18 +18,15 @@ if ($_POST["inviato"]) {
                             $user=$ris->fetch_object();
                             if ($user != null) {
                                 if ($user->IsAdmin == 1) {
-                                    // header("Location: ./Admin.php");
-                                    echo "SEI UN ADMIN<br>";
+                                    echo "<br><a href='./Admin.php'>Admin</a>";
                                 }elseif ($user->IsRel != null) {
-                                    echo "SEI UN RELATORE<br>";$
                                     $r=Database::executeQuery("SELECT IDRel,MailRel FROM `Relatore` WHERE `IdPar` = '".$user->IsRel."';" );
                                     $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
-                                    // header("Location: ./Relatore.php");
+                                    echo "<br><a href='./Relatore.php'>Relatore</a>";
                                 }elseif ($user->IsPar != null) {
                                     $r=Database::executeQuery("SELECT IdPar,MailPart FROM `Partecipante` WHERE `IdPar` = '".$user->IsPar."';" );
                                     $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
-                                    // header("Location: ./Partecipante.php");
-                                echo "SEI UN PARTECIPANTE<br>";
+                                    echo "<br><a href='./Partecipante.php'>Partecipante</a>";
                                 }
                             }
                         }
