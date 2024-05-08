@@ -11,6 +11,10 @@ if ($_SESSION["login"] == false) {
             $cs2=Database::executeQuery("INSERT INTO  `User` (`MailUser`,`PasswordUser`,`IsPar`) VALUE  ('".$_POST["email"]."','".$_POST["password"]."','".$lsid."');");
             if ($cs && $cs2) {
                 echo "Registrazione andata a buon fine";
+                $r=Database::executeQuery("SELECT IdPar,MailPart FROM `Partecipante` WHERE `IdPar` = '".$user->IsPar."';" );
+                $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
+                $_SESSION["login"]=true;
+                $_SESSION["Ruolo"]="Partecipante";
             }
         }else{
             echo "email gia esistente ";

@@ -18,15 +18,18 @@ if ($_SESSION["login"]  == false) {
                                     if ($user->IsAdmin == 1) {
                                         echo "<br><a href='./Admin.php'>Admin</a>";
                                         $_SESSION["login"]=true;
+                                        $_SESSION["Ruolo"]="Admin";
                                     }elseif ($user->IsRel != null) {
                                         $r=Database::executeQuery("SELECT IDRel,MailRel FROM `Relatore` WHERE `IdPar` = '".$user->IsRel."';" );
                                         $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                                         $_SESSION["login"]=true;
+                                        $_SESSION["Ruolo"]="Relatore";
                                         echo "<br><a href='./Relatore.php'>Relatore</a>";
                                     }elseif ($user->IsPar != null) {
                                         $r=Database::executeQuery("SELECT IdPar,MailPart FROM `Partecipante` WHERE `IdPar` = '".$user->IsPar."';" );
                                         $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                                         $_SESSION["login"]=true;
+                                        $_SESSION["Ruolo"]="Partecipante";
                                         echo "<br><a href='./Partecipante.php'>Partecipante</a>";
                                     }
                                 }
