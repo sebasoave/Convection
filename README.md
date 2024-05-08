@@ -1,25 +1,5 @@
-# Convection
-TO DO LIST PRIMARIO
-
-LOGIN: 
-  relatore:     
-          -programmi
-                    -aggiungi  
-                              -speech
-                              -sala
-                                    -piano
-                    -rimuovi
-                    -cambia
-                    -visualizzare
-                                  -tabella orari , nome programma , cosa tratta??
-                                  -n partecipanti
-                                                -info sui partecipanti
-                    -azienda
-                            -altri relatori della azienda
-  partecipante:
-              -programmi
-                        -visualizzare
-                                      -tabella orari , nome programma , cosa tratta??
-                                                                                      -info sul relatore
-                        -iscriversi  
-                                    -controlla n partecipanti sono disponibili per inscriversi
+MODIFICARE Login.php nel caso IsRel,IsPar == 1
+CREARE CODICE CtrlRel.php ->
+inserire tabel delle aziende se no aggiungerla 
+aggiungendo azienda aggiungo il relatore nella tabella rel 
+con paramentri tabella parteciapante e collego IsRel della tabella user

@@ -7,12 +7,8 @@
     <title>Admin Console</title>
 </head>
 <body>
+
 <h1>Partecipanti</h1>
-<?php
-include "DB.php";
-Database::connect();
-$ris=Database::executeQuery("select * from Partecipante");
-?>
 <table border="4">
     <tr>
         <th>IdPar</th>
@@ -20,41 +16,51 @@ $ris=Database::executeQuery("select * from Partecipante");
         <th>NomePart</th>
         <th>TelefonoPart</th>
         <th>MailPart</th>
+        <th>Relatore</th>
     </tr>
-<?php
-for ($i=0; $i < $ris->num_rows; $i++) { 
-    echo "<tr>";
-    foreach ($ris->fetch_object() as $key => $value) {
-        echo "<th>".$value."</th>";   
+    <?php
+    include "DB.php";
+    Database::connect();
+    $ris=Database::executeQuery("select * from Partecipante");
+    $row=$ris->fetch_all(MYSQLI_ASSOC);
+    // print_r($row);
+    for ($i=0; $i < count($row); $i++) {
+        echo "<tr>";
+        foreach ($row[$i] as $key => $value) {
+            echo "<th>".$value."</th>";   
+        }
+        echo "<th><a href='CtrlRel.php?id=".$row[$i] ['IdPar']."'>Rendi</a></th>";
+        echo "</tr>";
     }
-    echo "</tr>";
-}
-$ris=Database::executeQuery("SELECT Programma.IdProgramma,Speech.IdSpeech,Speech.Titolo,Speech.Argomento,Programma.NomeSala,Programma.FasciaOraria,Sala.NpostiSala FROM `Programma` , `Speech`,`Sala` WHERE Programma.IdSpeech = Speech.IdSpeech AND Programma.NomeSala = Sala.NomeSala; ");
-?>
+    ?>
+</table>
+
 <h1>Tabella Programmi</h1>
 <table border="2">
     <tr>
         <th>IdProgramma</th>
         <th>IdSpeech</th>
-        <th>Titolo	</th>
-        <th>Argomento	</th>
-        <th>NomeSala	</th>
+        <th>Titolo</th>
+        <th>Argomento</th>
+        <th>NomeSala</th>
         <th>FasciaOraria</th>
         <th>PostiDisponibili</th>
     </tr>
-<?php
-$idp=0;
-$fattibile="Iscriviti";
-$FlagFattibile="enable";
-for ($i=0; $i < $ris->num_rows; $i++) { 
-    echo "<tr>";
-    foreach ($ris->fetch_assoc() as $key => $value) {
-        echo "<th>".$value."</th>";      
+    <?php
+    $ris=Database::executeQuery("SELECT Programma.IdProgramma,Speech.IdSpeech,Speech.Titolo,Speech.Argomento,Programma.NomeSala,Programma.FasciaOraria,Sala.NpostiSala FROM `Programma` , `Speech`,`Sala` WHERE Programma.IdSpeech = Speech.IdSpeech AND Programma.NomeSala = Sala.NomeSala; ");
+    $idp=0;
+    $fattibile="Iscriviti";
+    $FlagFattibile="enable";
+    for ($i=0; $i < $ris->num_rows; $i++) { 
+        echo "<tr>";
+        foreach ($ris->fetch_assoc() as $key => $value) {
+            echo "<th>".$value."</th>";      
+        }
+        echo "</tr>";
     }
-    echo "</tr>";
-}
-Database::disconnect();
-?>
-
+    Database::disconnect();
+    ?>
 </table>
+
 </body>
+</html>
