@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
 </head>
-<>
+<body>
 <?php 
 include "./php/Conf.php";
-if (!$_SESSION["login"]) {
+if ($_SESSION["login"] == false) {
 ?>
     <form action="./php/Login.php" method="post">
         <input type="email" placeholder="email: " name="email" >
@@ -19,6 +19,10 @@ if (!$_SESSION["login"]) {
     </form>
     <a href='./php/Registrazione.php'>Registrazione<a>
 
-<?php }else{echo "Utente gia loggato";}?>
+<?php }else{
+    echo "Utente gia loggato";?>
+    <a href='./php/LogOut.php'>LogOut<a></a>
+<?php
+}?>
 </body>
 </html>
