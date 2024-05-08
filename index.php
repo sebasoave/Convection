@@ -17,7 +17,9 @@ if ($_SESSION["login"] == false) {
         <input type="password" placeholder="password: " name="password"   >
         <button type="submit" name="inviato" value="Login">Login</button>
     </form>
-    <a href='./php/Registrazione.php'>Registrazione<a>
+    <a href='./php/Registrazione.php'>Registrazione</a>
+    <a href='./TabellaProgrammi.php'>Tabella Programmi</a>
+    
 
 <?php }else{
     echo "Utente gia loggato";?>

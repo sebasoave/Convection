@@ -1,6 +1,3 @@
-<?php
-    echo "Registrati <br>";
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +7,7 @@
     <title>Registrazione</title>
 </head>
 <body>
+<?php include "Conf.php"; if ($_SESSION["login"] == false) {?>
     <form action="./ctrlreg.php" method="post">
         <input type="text" placeholder="nome: " name="nome" require >
         <input type="text" placeholder="cognome: " name="cognome" require>
@@ -19,4 +17,5 @@
         <button type="submit" name="inviato" value="Registrati">Registrati</button>
     </form>
     <a href='../index.php'>Home Page<a>
+<?php }else{echo "Hai gia eseguito il login";}?>
 </body>

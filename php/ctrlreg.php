@@ -1,17 +1,29 @@
 <?php
 include "DB.php";
+include "Conf.php";
 Database::connect();
-if (isset($_POST["inviato"])) {
-    $cs=Database::executeQuery("INSERT INTO `Partecipante` (`CognomePart`, `NomePart`, `TelefonoPart`, `MailPart`) VALUE ('".$_POST["cognome"]."','". $_POST["nome"]."','". $_POST["numtel"]."','".$_POST["email"]."');");
-    $lsid=Database::executeQuery("SELECT LAST_INSERT_ID() FROM `Relatore` ")->fetch_array()[0];
-    $cs2=Database::executeQuery("INSERT INTO  `User` (`MailUser`,`PasswordUser`,`IsPar`) VALUE  ('".$_POST["email"]."','".$_POST["password"]."','".$lsid."');");
-    if ($cs && $cs2) {
-        echo "Registrazione andata a buon fine";
+if ($_SESSION["login"] == false) {
+    if (isset($_POST["inviato"])) {
+        $EmailTrue=Database::executeQuery("SELECT * FROM `User` where `MailUser` = '".$_POST["email"]."';");
+        if ($EmailTrue->num_rows == 0) {
+            $cs=Database::executeQuery("INSERT INTO `Partecipante` (`CognomePart`, `NomePart`, `TelefonoPart`, `MailPart`) VALUE ('".$_POST["cognome"]."','". $_POST["nome"]."','". $_POST["numtel"]."','".$_POST["email"]."');");
+            $lsid=Database::executeQuery("SELECT LAST_INSERT_ID() FROM `Relatore` ")->fetch_array()[0];
+            $cs2=Database::executeQuery("INSERT INTO  `User` (`MailUser`,`PasswordUser`,`IsPar`) VALUE  ('".$_POST["email"]."','".$_POST["password"]."','".$lsid."');");
+            if ($cs && $cs2) {
+                echo "Registrazione andata a buon fine";
+            }
+        }else{
+            echo "email gia esistente ";
+        }
+
+       
+    }else{
+        echo "Non arrivi dal form di registrazione";
     }
 }else{
-    echo "Non arrivi dal form di registrazione";
+    echo "Sei gia loggato";
 }
 Database::disconnect();
 ?>
 <br><a href='../index.php'>Home Page<a>
-<a href='./Registrazione.php'>Torna indietro<a>
+<br><a href='./Registrazione.php'>Torna indietro<a>
