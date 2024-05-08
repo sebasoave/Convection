@@ -62,6 +62,6 @@ for ($i=0; $i < $ris->num_rows; $i++) {
 }
 Database::disconnect();
 ?>
-    
+   
 </body>
 </html>
