@@ -1,6 +1,7 @@
 <?php
 include "DB.php";
-echo "CONTROLLO REL IN LAVORAZIONE<br>";
+include "./Conf.php";
+// echo "CONTROLLO REL IN LAVORAZIONE<br>";
 $idp=$_GET["id"];
 Database::connect();
 $par=Database::executeQuery("select * from Partecipante where IdPar='".$idp."';")->fetch_assoc();
@@ -10,10 +11,12 @@ foreach ($par as $key => $value) {
 }
 $aziende=Database::executeQuery("select * from Azienda");
 if ($aziende->num_rows > 0) {
+	$_SESSION["Rel"]=$par;
 	$aziende = $aziende->fetch_all(MYSQLI_ASSOC);
 	echo "
 	<form method='get' action='./AddRell.php' >
-	<select>";
+	<select name='azienda'>
+		<option value='Sc'disabled >scegli un azienda</option>";
 	foreach ($aziende as $azienda) {
 		$rs=$azienda['RagioneSocialeAzienda'];
 		echo "<option value='".$rs."'>" .$rs."</option>";

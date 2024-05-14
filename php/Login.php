@@ -20,7 +20,7 @@ if ($_SESSION["login"]  == false) {
                                         $_SESSION["login"]=true;
                                         $_SESSION["Ruolo"]="Admin";
                                     }elseif ($user->IsRel != null) {
-                                        $r=Database::executeQuery("SELECT IDRel,MailRel FROM `Relatore` WHERE `IdPar` = '".$user->IsRel."';" );
+                                        $r=Database::executeQuery("SELECT IDRel,MailRel FROM `Relatore` WHERE `IDRel` = '".$user->IsRel."';" );
                                         $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                                         $_SESSION["login"]=true;
                                         $_SESSION["Ruolo"]="Relatore";
