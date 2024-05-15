@@ -22,7 +22,19 @@ if ($_SESSION["login"] == false) {
     
 
 <?php }else{
-    echo "Utente gia loggato";?>
+    echo "Utente gia loggato";
+    if ($_SESSION["Ruolo"] == "both") {
+        echo "<br><a href='./php/Relatore.php'>Relatore</a>";
+        echo "<br><a href='./php/Partecipante.php'>Partecipante</a>";
+    }elseif ($_SESSION["Ruolo"] == "Relatore") {
+        echo "<br><a href='./php/Relatore.php'>Relatore</a>";
+    }elseif($_SESSION["Ruolo"] == "Partecipante") {
+        echo "<br><a href='./php/Partecipante.php'>Partecipante</a>";
+    }elseif ($_SESSION["Ruolo"] == "Admin") {
+        echo "<br><a href='./php//Admin.php'>Admin</a>";
+    }
+    
+    ?><br>
     <a href='./php/LogOut.php'>LogOut<a></a>
 <?php
 }?>

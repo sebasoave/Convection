@@ -61,6 +61,9 @@ for ($i=0; $i < $ris->num_rows; $i++) {
     echo "</tr>";
 }
 Database::disconnect();
+if ($_SESSION["Ruolo"] == "both") {
+    echo "<a href='./Relatore.php'>Relatore</a>";
+}
 ?>
    
 </body>

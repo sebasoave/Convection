@@ -20,17 +20,27 @@
     </tr>
     <?php
     include "DB.php";
+    $skip=0;
     Database::connect();
     $ris=Database::executeQuery("select * from Partecipante");
     $row=$ris->fetch_all(MYSQLI_ASSOC);
-    // print_r($row);
     for ($i=0; $i < count($row); $i++) {
-        echo "<tr>";
         foreach ($row[$i] as $key => $value) {
-            echo "<th>".$value."</th>";   
+            if ($key == "IdPar" ) {
+                $us=Database::executeQuery("select IsRel from user where IsPar = ".$value.";");
+                if($us->fetch_assoc()["IsRel"]!=null){
+                    $skip=1;
+                    break;
+                }else{
+                    $skip=0;
+                }
+            }
+            echo "<th>".$value."</th>";
         }
-        echo "<th><a href='CtrlRel.php?id=".$row[$i] ['IdPar']."'>Rendi</a></th>";
-        echo "</tr>";
+        if ($skip == 0) {
+            echo "<th><a href='CtrlRel.php?id=".$row[$i] ['IdPar']."'>Rendi</a></th>";
+            echo "</tr>";
+        }
     }
     ?>
 </table>

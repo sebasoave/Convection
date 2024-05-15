@@ -19,17 +19,26 @@ if ($_SESSION["login"]  == false) {
                                         echo "<br><a href='./Admin.php'>Admin</a>";
                                         $_SESSION["login"]=true;
                                         $_SESSION["Ruolo"]="Admin";
-                                    }elseif ($user->IsRel != null) {
+                                    }
+                                    if ($user->IsRel != null) {
                                         $r=Database::executeQuery("SELECT IDRel,MailRel FROM `Relatore` WHERE `IDRel` = '".$user->IsRel."';" );
                                         $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                                         $_SESSION["login"]=true;
                                         $_SESSION["Ruolo"]="Relatore";
                                         echo "<br><a href='./Relatore.php'>Relatore</a>";
-                                    }elseif ($user->IsPar != null) {
+                                    }
+                                    if ($user->IsPar != null) {
                                         $r=Database::executeQuery("SELECT IdPar,MailPart FROM `Partecipante` WHERE `IdPar` = '".$user->IsPar."';" );
-                                        $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                                         $_SESSION["login"]=true;
-                                        $_SESSION["Ruolo"]="Partecipante";
+                                        if ($_SESSION["Ruolo"] == "Relatore") {
+                                            $idp=$r->fetch_assoc()["IdPar"];
+                                            $_SESSION["Ruolo"] ="both";
+                                            array_push($_SESSION["user"],$idp);
+                                            // print_r($_SESSION["user"]);
+                                        }else{
+                                            $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
+                                            $_SESSION["Ruolo"]="Partecipante";
+                                        }
                                         echo "<br><a href='./Partecipante.php'>Partecipante</a>";
                                     }
                                 }
