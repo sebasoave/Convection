@@ -1,3 +1,7 @@
+<?php 
+include "Conf.php";
+if ($_SESSION["Ruolo"] == "Admin") {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,3 +78,9 @@
 
 </body>
 </html>
+<?php
+
+}else{
+    echo "Non Puoi Accedere a questa pagina
+    <a href='../index.php'>Home</a>";
+}?>

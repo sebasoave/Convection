@@ -1,3 +1,11 @@
+<?php
+include "DB.php";
+include "Conf.php";
+Database::connect();
+if ($_SESSION["Ruolo"] == "both" || $_SESSION["Ruolo"] == "Partecipante") {
+
+$ris=Database::executeQuery("SELECT Programma.IdProgramma,Speech.IdSpeech,Speech.Titolo,Speech.Argomento,Programma.NomeSala,Programma.FasciaOraria,Sala.NpostiSala FROM `Programma` , `Speech`,`Sala` WHERE Programma.IdSpeech = Speech.IdSpeech AND Programma.NomeSala = Sala.NomeSala; ");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +14,6 @@
     <title>Partecipanti</title>
 </head>
 <body>
-<?php
-include "DB.php";
-include "Conf.php";
-Database::connect();
-$ris=Database::executeQuery("SELECT Programma.IdProgramma,Speech.IdSpeech,Speech.Titolo,Speech.Argomento,Programma.NomeSala,Programma.FasciaOraria,Sala.NpostiSala FROM `Programma` , `Speech`,`Sala` WHERE Programma.IdSpeech = Speech.IdSpeech AND Programma.NomeSala = Sala.NomeSala; ");
-?>
 <h1>Programmi</h1>
 <table border="2">
     <tr>
@@ -33,7 +35,12 @@ for ($i=0; $i < $ris->num_rows; $i++) {
     foreach ($ris->fetch_assoc() as $key => $value) {
         if ($key == "IdProgramma") {
             $idp=$value;   
-            $par=Database::executeQuery("SELECT * FROM Seglie where IdPar = '".$_SESSION["user"][0]["IdPar"]."' AND IdProgramma = '".$idp."';");
+            if ($_SESSION["Ruolo"] == "both") {
+                $IdPar=$_SESSION["user"][1];
+            }else{
+                $IdPar=$_SESSION["user"][0]["IdPar"];
+            }
+            $par=Database::executeQuery("SELECT * FROM Seglie where IdPar = '".$IdPar."' AND IdProgramma = '".$idp."';");
             if ($par->num_rows > 0) { 
                 $FlagFattibile="disabled";
                 $fattibile="No";
@@ -63,6 +70,10 @@ for ($i=0; $i < $ris->num_rows; $i++) {
 Database::disconnect();
 if ($_SESSION["Ruolo"] == "both") {
     echo "<a href='./Relatore.php'>Relatore</a>";
+}
+}else{
+    echo "Non Puoi Accedere a questa pagina
+    <a href='../index.php'>Home</a>";
 }
 ?>
    

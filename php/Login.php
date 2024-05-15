@@ -34,7 +34,7 @@ if ($_SESSION["login"]  == false) {
                                             $idp=$r->fetch_assoc()["IdPar"];
                                             $_SESSION["Ruolo"] ="both";
                                             array_push($_SESSION["user"],$idp);
-                                            // print_r($_SESSION["user"]);
+                                            print_r($_SESSION["user"]);
                                         }else{
                                             $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                                             $_SESSION["Ruolo"]="Partecipante";
