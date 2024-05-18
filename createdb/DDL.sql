@@ -15,7 +15,6 @@ create table if not exists Relatore(
     TelefonoRel  varchar(15),
     MailRel varchar(30),
     IdAzz varchar(30) null,
-    Rivisionare boolean not null,
     primary key(IDRel),
     foreign key (IdAzz) references Azienda(RagioneSocialeAzienda)
 );
@@ -83,11 +82,4 @@ create table if not exists User(
     foreign key (IsPar) references Partecipante(IdPar),
     foreign key (IsRel) references Relatore(IdRel),
     primary key(idUser)
-);
-
-create table if not exists Rivisiona(
-    IdAdmin int default 1,
-    IdRelRev int not null,
-    primary key(IdAdmin,IdRelRev),
-    foreign key (IdRelRev) references Relatore(IdRel)
 );

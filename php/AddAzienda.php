@@ -3,7 +3,7 @@ include "./Conf.php";
 include "./DB.php";
 Database::connect();
 $r=Database::executeQuery("select * from azienda where RagioneSocialeAzienda = '".$_GET["RagSoc"]."';");
-if ($r->num_rows < 0) {
+if ($r->num_rows == 0) {
     $r=Database::executeQuery("insert into azienda (RagioneSocialeAzienda,IndirizzoAzienda) value ('".$_GET["RagSoc"]."','".$_GET["IndAzzienda"]."');");
     if($r==1){
         echo "INSERIMENTO RIUSCITO";
