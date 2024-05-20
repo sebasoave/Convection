@@ -9,7 +9,7 @@ if ($_SESSION["Ruolo"] == "Admin") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Console</title>
-    <style>
+    <style>/*
 #tableRelatori{
  transform:translatex(781px) translatey(-277px);
 }
@@ -44,7 +44,7 @@ if ($_SESSION["Ruolo"] == "Admin") {
     width:400px;
 }
 
-
+*/
 </style>
 
 </head>
@@ -123,8 +123,8 @@ if ($_SESSION["Ruolo"] == "Admin") {
 </table>
 <h1 id="AddAziendaTit">Aggiungi Azienda </h1>
 <form method='get' action='./AddAzienda.php' id="AddAzienda">
-    <input type='text' placeholder='Ragione Sociale' name='RagSoc'/>
-    <input type='text' placeholder='Indrizzo' name='IndAzzienda'/>
+    <input type='text' required placeholder='Ragione Sociale' name='RagSoc'/>
+    <input type='text' required placeholder='Indrizzo' name='IndAzzienda'/>
     <button type='submit'>Aggiungi Azienda</button>
 </form>
 
@@ -153,6 +153,13 @@ if ($_SESSION["Ruolo"] == "Admin") {
         <button type='submit'>Aggiungi Relatore</button>";
     }
 ?>
+</form>
+
+<h1 id="AddSpeachTit">Aggiungi Speach</h1>
+<form action="./AddSpeach.php" method="get" id="AddSpeach" >
+    <input type="text" placeholder="Titolo: " name="titolo" required /><br><br>
+    <textarea name="Argomento" placeholder="Argomento: "    required maxlength="150"></textarea>
+    <button type='submit' name="Add" value="Aggiungi Speach">Aggiungi Speach</button>
 </form>
 
 
