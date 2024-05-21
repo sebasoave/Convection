@@ -41,14 +41,15 @@ if ($_SESSION["login"]  == false) {
     if ($_POST["inviato"]) {
         if ($_POST["email"]) {
             if ($_POST["password"]) {
+                $pw=hash("sha256",$_POST["password"]);
                 if(Database::connect()){
                     $EmailTrue=Database::executeQuery("SELECT * FROM `User` where `MailUser` = '".$_POST["email"]."';");
                     if ($EmailTrue->num_rows > 0) {
-                        $PasswordTrue=Database::executeQuery("SELECT * FROM `User` where `PasswordUser` = '".$_POST["password"]."';");
+                        $PasswordTrue=Database::executeQuery("SELECT * FROM `User` where `PasswordUser` = '".$pw."';");
                         if ($PasswordTrue->num_rows > 0) {
                             echo "<div class='popup'>";
                             echo "<h2>Utente Loggato</h2>";
-                            $ris=Database::executeQuery("SELECT `IsRel`, `IsPar`, `IsAdmin` FROM `User` WHERE `MailUser` = '".$_POST["email"]."' AND `PasswordUser` = '".$_POST["password"]."'  ;" );
+                            $ris=Database::executeQuery("SELECT `IsRel`, `IsPar`, `IsAdmin` FROM `User` WHERE `MailUser` = '".$_POST["email"]."' AND `PasswordUser` = '".$pw."'  ;" );
                             if($ris){
                                 $user=$ris->fetch_object();
                                 if ($user != null) {

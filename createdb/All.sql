@@ -75,7 +75,7 @@ create table if not exists Relaziona(
 create table if not exists User(
     idUser int auto_increment not null,
     MailUser varchar(30),
-    PasswordUser varchar(30),
+    PasswordUser varchar(256),
     IsRel int null,
     IsPar int null,
     IsAdmin boolean null,
@@ -173,20 +173,20 @@ INSERT INTO User(MailUser,PasswordUser,IsAdmin) VALUE
 
 
 INSERT INTO User(MailUser,PasswordUser,IsPar) VALUES
-('paolo.rossi@example.com','paolo.rossi',1),
-( 'maria.bianchi@example.com', 'maria.bianchi',2 ),
-('luigi.verdi@example.com', 'luigi.verdi',3),
-('giovanna.russo@example.com', 'giovanna.russo',4),
-('marco.ferrari@example.com', 'marco.ferrari',5),
-('giulia.esposito@example.com', 'giulia.esposito' ,6 ),
-('luca.romano@example.com','luca.romano',7);
+('paolo.rossi@example.com','54f9c526bf2c9d74ef06d44c7a39c261e49636766bd0da854f889c229b1c6837',1),
+( 'maria.bianchi@example.com', '7d671591a0d938e2efaf7cac9b5359298fd8c5cabb6ed0ebf2e14a8a259c8aa6',2 ),
+('luigi.verdi@example.com', '6ccee363af8d86b4d2f5cb38db39640e7f97f9adf21c86429b88206a958a376c',3),
+('giovanna.russo@example.com', '5717e3d92764ccf08220a89e9a53d6585b2915fcb5fb44716e2d3e44ae480d60',4),
+('marco.ferrari@example.com', 'ba6d720ebdd377dd88231f93488e15c4175df95b978a4fd52c977605eae3e1ce',5),
+('giulia.esposito@example.com', '827aea41386346d89545d40fb230e7b3f5c85b9408bb285a8af853245d854d33' ,6 ),
+('luca.romano@example.com','e9805c7e802e9aba8084e200b7915d75563619fc636cc607b83ba3051ba50142',7);
 
 
 INSERT INTO User (PasswordUser, MailUser, IsRel) VALUES
-('Rossi.Mario','mario.rossi@example.com', 1),
-('Bianchi.Luca', 'luca.bianchi@example.com',2 ),
-('Verdi.Anna', 'anna.verdi@example.com', 3 ),
-('Russo.Giuseppe', 'giuseppe.russo@example.com',4 ),
-('Ferrari.Laura',  'laura.ferrari@example.com',5 ),
-('Esposito.Antonio', 'antonio.esposito@example.com',6 ),
-('Romano.Giovanna',  'giovanna.romano@example.com',7 );
+('1729ec9149d3d2af04ee1838ce459779c1aa95cc73056d21dc25595b6ef97fa0','mario.rossi@example.com', 1),
+('0966f7e686fc70db08ff162d7dfc3a65dbdcffade96015831018b7f0268dccbc', 'luca.bianchi@example.com',2 ),
+('85bc4214f741a1f2a83fefc94f3ee2e3e5110920dfa0861e93fd98f3de9a3b70', 'anna.verdi@example.com', 3 ),
+('c1ac7f0e4f039e8baa5b09d2ba5f821364004e5c69108ba1a9a4efad00af7f0b', 'giuseppe.russo@example.com',4 ),
+('1e9aac1259ae609aa18d45bb38f9eabb067c16b913dc36834a83198b61262791',  'laura.ferrari@example.com',5 ),
+('7603f18bb92d502cc94b1374942350876298209d3cdab4fe35565cd0f8995e9c', 'antonio.esposito@example.com',6 ),
+('40fae5423f4acadd472338643c7041a869f0bb33cb13ce3943674371e5756c14',  'giovanna.romano@example.com',7 );
