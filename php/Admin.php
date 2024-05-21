@@ -162,6 +162,50 @@ if ($_SESSION["Ruolo"] == "Admin") {
     <button type='submit' name="Add" value="Aggiungi Speach">Aggiungi Speach</button>
 </form>
 
+<h1 id="ConnectSpeach">Collega Speach a Programma</h1>
+<form method='get' action='./AddProg.php' id="AddRell">
+    <?php 
+    $speachsql=Database::executeQuery("select * from speech");;
+    $speach=$speachsql->fetch_all(MYSQLI_ASSOC);
+    ?>
+    <select  name="IdSpeech">
+    <?php
+        for ($i=0; $i < count($speach) ; $i++) { 
+            echo "<option value='".$speach[$i]["IdSpeech"]."'>".$speach[$i]["Titolo"]."</option>";
+        }
+    ?>
+    </select>
+
+    <select  name="RelId">
+        <?php
+        $Rp=Database::executeQuery("select * from relatore")->fetch_all(MYSQLI_ASSOC);
+        print_r($rp);
+        for ($i=0; $i < count($Rp) ; $i++) { 
+            echo "<option value='".$Rp[$i]["IDRel"]."'>".$Rp[$i]["CognomeRel"]." - ".$Rp[$i]["NomeRel"] ."</option>";
+        }
+        ?>
+    </select>
+    <select  name="SalaId">
+    <?php
+    $salesql=Database::executeQuery("select * from sala");
+    $Sala=$salesql->fetch_all(MYSQLI_ASSOC);
+        for ($i=0; $i < count($Sala) ; $i++) { 
+            echo "<option value='".$Sala[$i]["NomeSala"]."'>".$Sala[$i]["NomeSala"]." - ".$Sala[$i]["NpostiSala"] ."</option>";
+        }
+    ?>
+    </select>
+    <select name="Orari">
+        <option value="08:00 - 09:00">08:00 - 09:00</option>
+        <option value="09:00 - 10:00">09:00 - 10:00</option>
+        <option value="10:00 - 11:00">10:00 - 11:00</option>
+        <option value="11:00 - 12:00">11:00 - 12:00</option>
+        <option value="12:00 - 13:00">12:00 - 13:00</option>
+        <option value="14:00 - 15:00">14:00 - 15:00</option>
+        <option value="15:00 - 16:00">15:00 - 16:00</option>
+        <option value="16:00 - 17:00">16:00 - 17:00</option>
+    </select>
+    <button type='submit'>Aggiungi Programma</button>
+</form>
 
 </body>
 </html>

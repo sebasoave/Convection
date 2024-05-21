@@ -133,13 +133,13 @@ INSERT INTO Sala (NomeSala, NpostiSala, NPiano) VALUES
 ('Sala G', 45, 4);
 
 INSERT INTO Programma (IdSpeech, NomeSala, FasciaOraria) VALUES
-(1, 'Sala A', '09:00 - 10:30'),
-(2, 'Sala B', '10:45 - 12:15'),
-(3, 'Sala C', '13:30 - 15:00'),
-(4, 'Sala D', '15:15 - 16:45'),
-(5, 'Sala E', '09:00 - 10:30'),
-(6, 'Sala F', '10:45 - 12:15'),
-(7, 'Sala G', '13:30 - 15:00');
+(1, 'Sala A', '09:00 - 10:00'),
+(2, 'Sala B', '10:00 - 11:00'),
+(3, 'Sala C', '14:00 - 15:00'),
+(4, 'Sala D', '15:00 - 16:00'),
+(5, 'Sala E', '16:00 - 17:00'),
+(6, 'Sala F', '08:00 - 09:00'),
+(7, 'Sala G', '14:00 - 15:00');
 
 INSERT INTO Partecipante (CognomePart, NomePart, TelefonoPart, MailPart) VALUES
 ('Rossi', 'Paolo', '1234567890', 'paolo.rossi@example.com'),

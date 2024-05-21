@@ -1,6 +1,7 @@
 <?php
 include "DB.php";
 include "Conf.php";
+$user=$_SESSION["user"];
 Database::connect();
 if ($_SESSION["login"] == false) {
     if (isset($_POST["inviato"])) {
