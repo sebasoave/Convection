@@ -16,6 +16,8 @@ if ($_SESSION["login"] == false) {
                 $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                 $_SESSION["login"]=true;
                 $_SESSION["Ruolo"]="Partecipante";
+                setcookie("user", $_SESSION["user"], time() + 1200, "/");
+                setcookie("ruolo", "Partecipante", time() + 1200, "/");
             }
         }else{
             echo "email gia esistente ";

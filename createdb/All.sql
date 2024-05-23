@@ -169,7 +169,7 @@ INSERT INTO Relaziona (IDRel, IdProgramma) VALUES
 (7, 7);
 
 INSERT INTO User(MailUser,PasswordUser,IsAdmin) VALUE 
-("admin@example.com","admin.admin",1);
+("admin@example.com","80802ed665136a1d27474361f85b32aa8ddc505bfac518d347d17f07a685e54b",1);
 
 
 INSERT INTO User(MailUser,PasswordUser,IsPar) VALUES
@@ -184,9 +184,9 @@ INSERT INTO User(MailUser,PasswordUser,IsPar) VALUES
 
 INSERT INTO User (PasswordUser, MailUser, IsRel) VALUES
 ('1729ec9149d3d2af04ee1838ce459779c1aa95cc73056d21dc25595b6ef97fa0','mario.rossi@example.com', 1),
-('0966f7e686fc70db08ff162d7dfc3a65dbdcffade96015831018b7f0268dccbc', 'luca.bianchi@example.com',2 ),
-('85bc4214f741a1f2a83fefc94f3ee2e3e5110920dfa0861e93fd98f3de9a3b70', 'anna.verdi@example.com', 3 ),
-('c1ac7f0e4f039e8baa5b09d2ba5f821364004e5c69108ba1a9a4efad00af7f0b', 'giuseppe.russo@example.com',4 ),
-('1e9aac1259ae609aa18d45bb38f9eabb067c16b913dc36834a83198b61262791',  'laura.ferrari@example.com',5 ),
-('7603f18bb92d502cc94b1374942350876298209d3cdab4fe35565cd0f8995e9c', 'antonio.esposito@example.com',6 ),
-('40fae5423f4acadd472338643c7041a869f0bb33cb13ce3943674371e5756c14',  'giovanna.romano@example.com',7 );
+('luca.bianchi','luca.bianchi@example.com',2 ),
+('85bc4214f741a1f2a83fefc94f3ee2e3e5110920dfa0861e93fd98f3de9a3b70','anna.verdi@example.com', 3 ),
+('c1ac7f0e4f039e8baa5b09d2ba5f821364004e5c69108ba1a9a4efad00af7f0b','giuseppe.russo@example.com',4 ),
+('1e9aac1259ae609aa18d45bb38f9eabb067c16b913dc36834a83198b61262791','laura.ferrari@example.com',5 ),
+('7603f18bb92d502cc94b1374942350876298209d3cdab4fe35565cd0f8995e9c','antonio.esposito@example.com',6 ),
+('40fae5423f4acadd472338643c7041a869f0bb33cb13ce3943674371e5756c14', 'giovanna.romano@example.com',7 );

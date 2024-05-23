@@ -4,45 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabella Programmi</title>
-    <style>
-        /* Stile per il titolo */
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Stile per la tabella */
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #ddd;
-        }
-
-        /* Stile per i link di navigazione */
-        a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 <?php

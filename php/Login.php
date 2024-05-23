@@ -5,33 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ControllaLogin</title>
-    <style>
-        /* Stile generale per il popup */
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #f2f2f2;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-        }
-
-        /* Stile per il titolo del popup */
-        .popup h2 {
-            margin-top: 0;
-            text-align: center;
-        }
-
-        /* Stile per i link all'interno del popup */
-        .popup a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 <?php
@@ -57,12 +30,14 @@ if ($_SESSION["login"]  == false) {
                                         echo "<a href='./Admin.php'>Admin</a>";
                                         $_SESSION["login"]=true;
                                         $_SESSION["Ruolo"]="Admin";
+                                        setcookie("ruolo", "admin", time() + 1200, "/");
                                     }
                                     if ($user->IsRel != null) {
                                         $r=Database::executeQuery("SELECT IDRel,MailRel FROM `Relatore` WHERE `IDRel` = '".$user->IsRel."';" );
                                         $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                                         $_SESSION["login"]=true;
                                         $_SESSION["Ruolo"]="Relatore";
+                                        setcookie("ruolo", "Relatore", time() + 1200, "/");
                                         echo "<a href='./Relatore.php'>Relatore</a>";
                                     }
                                     if ($user->IsPar != null) {
@@ -72,9 +47,11 @@ if ($_SESSION["login"]  == false) {
                                             $idp=$r->fetch_assoc()["IdPar"];
                                             $_SESSION["Ruolo"] ="both";
                                             array_push($_SESSION["user"],$idp);
+                                            setcookie("ruolo", "both", time() + 1200, "/");
                                         }else{
                                             $_SESSION["user"]=( mysqli_fetch_all($r, MYSQLI_ASSOC));
                                             $_SESSION["Ruolo"]="Partecipante";
+                                            setcookie("ruolo", "Partecipante", time() + 1200, "/");
                                         }
                                         echo "<a href='./Partecipante.php'>Partecipante</a>";
                                     }
