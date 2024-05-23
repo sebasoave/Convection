@@ -42,8 +42,8 @@ for ($i=0; $i < $ris->num_rows; $i++) {
             }
             $par=Database::executeQuery("SELECT * FROM Seglie where IdPar = '".$IdPar."' AND IdProgramma = '".$idp."';");
             if ($par->num_rows > 0) { 
-                $FlagFattibile="disabled";
-                $fattibile="No";
+                // $FlagFattibile="disabled";
+                $fattibile="Disiscriviti";
             }else{
                 $fattibile="Iscriviti";
                 $FlagFattibile="enable";
@@ -52,7 +52,7 @@ for ($i=0; $i < $ris->num_rows; $i++) {
         if ($fattibile==="Iscriviti") {
             if ($key == "NpostiSala" && $value == 0) {
                     $FlagFattibile="disabled";
-                    $fattibile="No";
+                    $fattibile="NO Posti";
             }elseif($key == "NpostiSala" && $value > 0){
                     $fattibile="Iscriviti";
                     $FlagFattibile="enable";
@@ -61,7 +61,7 @@ for ($i=0; $i < $ris->num_rows; $i++) {
         echo "<th>".$value."</th>";      
             
     }
-    echo "<th><br><form method='post' action='Iscrizione.php'>
+    echo "<th><br><form method='post' action='".$fattibile.".php'>
         <input hidden name='id_prog'value='".$idp."' >
         <input type='submit' name='invia' value='".$fattibile."' ".$FlagFattibile.">
     </form></th>";
